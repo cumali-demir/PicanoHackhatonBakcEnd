@@ -67,6 +67,24 @@ protectedRoutes.post('/check', function (req, res) {
     })
   });
 
+  protectedRoutes.get('/advertise', function (req, res) {
+
+    AdvertiseModel.find().populate('category').populate('user').exec()
+    .then(function (advertiseModel) {
+      return res.json({success: true, advertise: advertiseModel});
+    })
+  });
+
+  protectedRoutes.post('/advertise/user', function (req, res) {
+
+    let userID = req.body ._id;
+  
+    AdvertiseModel.findOne({'user': userID}).populate('category').populate('user').exec()
+    .then(function (advertiseModel) {
+      return res.json({success: true, advertise: advertiseModel});
+    })
+  });
+
   protectedRoutes.post('/offer/create', function (req, res) {
     let offerModel = req.body;
     offerModel.offererID = req.decoded.user._id;
@@ -117,6 +135,21 @@ protectedRoutes.post('/check', function (req, res) {
     let status = req.body.status;
   
    OfferModel.update({'_id': offerID}, { $set: { status: status }}, function (err, info) {
+    if (err) {
+      return res.json({success: false, message: 'Something went wrong: ' + err});
+    }
+    else {
+      return res.json({success: true,info: info});
+    }
+  });
+});
+
+protectedRoutes.post('/offer/advertise', function (req, res) {
+
+    let advertiseID = req.body ._id;
+    let status = req.body.status;
+  
+   AdvertiseModel.update({'_id': advertiseID}, { $set: { status: status }}, function (err, info) {
     if (err) {
       return res.json({success: false, message: 'Something went wrong: ' + err});
     }

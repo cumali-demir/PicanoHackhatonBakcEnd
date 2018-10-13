@@ -206,3 +206,55 @@ Cumali'nin Kod Fabrikası
     success: boolean,
     offer: offer,
 }
+
+# @POST /api/u/offer/update
+=====
+- #### parameters
+{
+    "_id":
+    "status":
+}
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    offer: offer,
+}
+
+# @POST /api/u/advertise/user
+=====
+- #### parameters
+{
+    "_id":
+}
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    advertise: advertise
+}
+
+# @POST /api/u/advertise
+=====
+
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    advertise: advertise
+}
