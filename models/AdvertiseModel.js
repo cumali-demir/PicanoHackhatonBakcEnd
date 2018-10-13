@@ -17,6 +17,11 @@ let userSchema = mongoose.Schema({
         required: true,
         ref: ModelConfig.User
     },
+    city: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: ModelConfig.City
+    },
     status: {
         type: Number,
         default: 0
@@ -35,6 +40,10 @@ let userSchema = mongoose.Schema({
 
     },
     budget: {
+        type: Number,
+        required: true
+    },
+    avaliableSpaces: {
         type: Number,
         required: true
     }
