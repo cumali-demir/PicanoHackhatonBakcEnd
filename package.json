@@ -1,0 +1,19 @@
+{
+  "name": "pisanohackhatonbakcend",
+  "version": "1.0.0",
+  "description": "REST API for pisano hackathon",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cumali-demir/PisanoHackhatonBakcEnd.git"
+  },
+  "author": "ACK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cumali-demir/PisanoHackhatonBakcEnd/issues"
+  },
+  "homepage": "https://github.com/cumali-demir/PisanoHackhatonBakcEnd#readme"
+}
