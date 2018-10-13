@@ -114,7 +114,7 @@ Cumali'nin Kod Fabrikası
     advertise: advertise,
 }
 
- @POST /api/u/advertise/one
+# @POST /api/u/advertise/one
 =====
 - #### parameters
 {
@@ -131,4 +131,78 @@ Cumali'nin Kod Fabrikası
 {
     success: boolean,
     advertise: advertise,
+}
+
+# @POST /api/u/offer/create
+=====
+- #### parameters
+{
+    "token":
+    "advertiseID":
+    "budget":
+}
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    offer: offer,
+}
+
+# @POST /api/u/offer/advertise
+=====
+- #### parameters
+{
+    "_id":
+}
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    offer: offer,
+}
+
+# @POST /api/u/offer/user
+=====
+- #### parameters
+{
+    "_id":
+}
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    offer: offer,
+}
+
+# @POST /api/u/offer/one
+=====
+- #### parameters
+{
+    "_id":
+}
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    offer: offer,
 }

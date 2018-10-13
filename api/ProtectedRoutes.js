@@ -2,6 +2,8 @@ import {RouteConfig} from "./RouteConfig";
 import express from "express";
 import jwt from "jsonwebtoken";
 import AdvertiseModel from "./../models/AdvertiseModel";
+import OfferModel from "./../models/OfferModel";
+
 
 
 let protectedRoutes = express.Router();
@@ -62,6 +64,50 @@ protectedRoutes.post('/check', function (req, res) {
     AdvertiseModel.findOne({'_id': advertiseID}).populate('category').populate('user').exec()
     .then(function (advertiseModel) {
       return res.json({success: true, advertise: advertiseModel});
+    })
+  });
+
+  protectedRoutes.post('/offer/create', function (req, res) {
+    let offerModel = req.body;
+    offerModel.offererID = req.decoded.user._id;
+    OfferModel.create(offerModel, function(err, offerModel) {
+            if (err){
+               return res.json({success: false, message: 'Something went wrong: ' + err});
+            } else {
+              return res.json({ success: true, offer: offerModel });
+            }
+        });
+  });
+
+  //return all offers for a specific advertise
+  protectedRoutes.post('/offer/advertise', function (req, res) {
+
+    let offerID = req.body ._id;
+  
+    OfferModel.findOne({'advertiseID': offerID}).populate('advertiseID').populate('offererID').exec()
+    .then(function (offerModel) {
+      return res.json({success: true, offer: offerModel});
+    })
+  });
+
+  //return all offers for a specific user
+  protectedRoutes.post('/offer/user', function (req, res) {
+
+    let userID = req.body ._id;
+  
+    OfferModel.findOne({'offererID': userID}).populate('advertiseID').populate('offererID').exec()
+    .then(function (offerModel) {
+      return res.json({success: true, offer: offerModel});
+    })
+  });
+
+  protectedRoutes.post('/offer/one', function (req, res) {
+
+    let offerID = req.body ._id;
+  
+    OfferModel.findOne({'_id': offerID}).populate('advertiseID').populate('offererID').exec()
+    .then(function (offerModel) {
+      return res.json({success: true, offer: offerModel});
     })
   });
 

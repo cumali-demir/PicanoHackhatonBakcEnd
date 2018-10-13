@@ -14,7 +14,8 @@ let userSchema = mongoose.Schema({
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: ModelConfig.User
     },
     status: {
         type: Number,
@@ -29,7 +30,9 @@ let userSchema = mongoose.Schema({
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: ModelConfig.Category
+
     },
     budget: {
         type: Number,
