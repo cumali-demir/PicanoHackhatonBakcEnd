@@ -21,7 +21,16 @@ let userSchema = mongoose.Schema({
     budget: {
         type: Number,
         required: true
-    }
+    },
+    product: {
+        type: String,
+        required: true
+    },
+    note: {
+        type: String,
+        required: true
+    },
+
 });
 
 let OfferModel = module.exports = mongoose.model(ModelConfig.Offer, userSchema, 'offer');
