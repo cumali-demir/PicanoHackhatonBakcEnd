@@ -2,6 +2,7 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import {RouteConfig} from "./RouteConfig";
 import UserModel from "./../models/UserModel";
+import CategoryModel from "./../models/CategoryModel";
 
 let publicRoutes = express.Router();
 
@@ -48,5 +49,16 @@ publicRoutes.post('/signin', function (req, res) {
         }
     });
 });
+
+publicRoutes.get('/categories', function (req, res) {
+    CategoryModel.find({}, function (err, categories) {
+      if (err) {
+        res.json({success: false, message: 'Something went wrong: ' + err});
+      }
+      else {
+        return res.json({success: true, categories: categories});
+      }
+    });
+  });
 
 export default publicRoutes;

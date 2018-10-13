@@ -1,3 +1,4 @@
 export const ModelConfig = {
-    User: "UserModel"
+    User: "UserModel",
+    Category: "CategoryModel"
 };
