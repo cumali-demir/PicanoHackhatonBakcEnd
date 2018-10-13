@@ -50,7 +50,7 @@ protectedRoutes.post('/check', function (req, res) {
             if (err){
                return res.json({success: false, message: 'Something went wrong: ' + err});
             } else {
-              return res.json({ success: true, advertiseModel: advertiseModel });
+              return res.json({ success: true, advertise: advertiseModel });
             }
         });
   });

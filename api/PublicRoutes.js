@@ -4,6 +4,7 @@ import {RouteConfig} from "./RouteConfig";
 import UserModel from "./../models/UserModel";
 import CategoryModel from "./../models/CategoryModel";
 import CityModel from "./../models/CityModel";
+import AdvertiseModel from "./../models/AdvertiseModel";
 
 
 let publicRoutes = express.Router();
@@ -73,5 +74,16 @@ publicRoutes.get('/cities', function (req, res) {
       }
     });
 });
+
+publicRoutes.get('/advertise', function (req, res) {
+    AdvertiseModel.find({}).sort({'created_date': 'desc'}).populate('user').populate('category').exec(function (err, advertiseModel) {
+      if (err) {
+        res.json({success: false, message: 'Something went wrong: ' + err});
+      }
+      else {
+        return res.json({success: true, advertise: advertiseModel});
+      }
+    });
+  });
 
 export default publicRoutes;

@@ -77,7 +77,7 @@ Cumali'nin Kod Fabrikası
     cities: cities,
 }
 
-# @GET /api/u/advertise/create
+# @POST /api/u/advertise/create
 =====
 - #### parameters
 {
