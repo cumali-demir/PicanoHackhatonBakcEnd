@@ -111,4 +111,19 @@ protectedRoutes.post('/check', function (req, res) {
     })
   });
 
+  protectedRoutes.post('/offer/update', function (req, res) {
+
+    let offerID = req.body ._id;
+    let status = req.body.status;
+  
+   OfferModel.update({'_id': offerID}, { $set: { status: status }}, function (err, info) {
+    if (err) {
+      return res.json({success: false, message: 'Something went wrong: ' + err});
+    }
+    else {
+      return res.json({success: true,info: info});
+    }
+  });
+});
+
 export default protectedRoutes;
