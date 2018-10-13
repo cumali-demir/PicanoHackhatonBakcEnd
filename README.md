@@ -48,3 +48,31 @@ Cumali'nin Kod Fabrikası
     user: UserModel,
     token: string
 }
+
+# @GET /api/categories
+======
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    categories: categories,
+}
+
+# @GET /api/cities
+======
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    cities: cities,
+}

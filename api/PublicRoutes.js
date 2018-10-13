@@ -3,6 +3,8 @@ import jwt from "jsonwebtoken";
 import {RouteConfig} from "./RouteConfig";
 import UserModel from "./../models/UserModel";
 import CategoryModel from "./../models/CategoryModel";
+import CityModel from "./../models/CityModel";
+
 
 let publicRoutes = express.Router();
 
@@ -59,6 +61,17 @@ publicRoutes.get('/categories', function (req, res) {
         return res.json({success: true, categories: categories});
       }
     });
-  });
+});
+
+publicRoutes.get('/cities', function (req, res) {
+    CityModel.find({}, function (err, cities) {
+      if (err) {
+        res.json({success: false, message: 'Something went wrong: ' + err});
+      }
+      else {
+        return res.json({success: true, cities: cities});
+      }
+    });
+});
 
 export default publicRoutes;
