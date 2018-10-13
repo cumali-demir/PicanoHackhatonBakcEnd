@@ -1,5 +1,6 @@
 export const ModelConfig = {
     User: "UserModel",
     Category: "CategoryModel",
-    City: "CityModel"
+    City: "CityModel",
+    Advertise: "AdvertiseModel"
 };

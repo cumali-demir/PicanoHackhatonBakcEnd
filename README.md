@@ -76,3 +76,26 @@ Cumali'nin Kod Fabrikası
     success: boolean,
     cities: cities,
 }
+
+# @GET /api/u/advertise/create
+=====
+- #### parameters
+{
+    "token":
+    "title":
+    "declaration":
+    "end_date":
+    "category":
+    "budget":
+}
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    advertise: advertise,
+}
