@@ -99,3 +99,36 @@ Cumali'nin Kod Fabrikası
     success: boolean,
     advertise: advertise,
 }
+
+# @GET /api/advertise/
+=====
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    advertise: advertise,
+}
+
+ @POST /api/u/advertise/one
+=====
+- #### parameters
+{
+    "token":
+    "_id":
+}
+- #### returns if(fails)
+{
+    success: boolean,
+    message: string
+}
+
+- #### returns if(success)
+{
+    success: boolean,
+    advertise: advertise,
+}

@@ -55,4 +55,14 @@ protectedRoutes.post('/check', function (req, res) {
         });
   });
 
+  protectedRoutes.post('/advertise/one', function (req, res) {
+
+    let advertiseID = req.body ._id;
+  
+    AdvertiseModel.findOne({'_id': advertiseID}).populate('category').populate('user').exec()
+    .then(function (advertiseModel) {
+      return res.json({success: true, advertise: advertiseModel});
+    })
+  });
+
 export default protectedRoutes;
