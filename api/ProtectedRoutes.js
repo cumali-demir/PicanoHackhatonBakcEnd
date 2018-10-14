@@ -134,16 +134,36 @@ protectedRoutes.post('/check', function (req, res) {
   protectedRoutes.post('/offer/update', function (req, res) {
 
     let offerID = req.body ._id;
+    let advertiseID = req.body .advertiseID;
     let status = req.body.status;
-  
-   OfferModel.update({'_id': offerID}, { $set: { status: status }}, function (err, info) {
-    if (err) {
-      return res.json({success: false, message: 'Something went wrong: ' + err});
+
+    console.log(offerID);
+    console.log(advertiseID);
+    console.log(status);
+
+
+
+    if (status == '1') {
+        OfferModel.update({'advertiseID': advertiseID},{$set: {status: 2}}, { multi : true } ,function (err,info) {
+            //TODO: Handle error
+              console.log('offer');
+        });
+        AdvertiseModel.update({'_id': advertiseID}, {$set: {status: 1}},function (err,info) {
+              //TODO: Handle error            
+              console.log('advertise');
+
+        });
     }
-    else {
-      return res.json({success: true,info: info});
-    }
-  });
+
+    OfferModel.update({'_id': offerID}, { $set: { status: status }}, function (err, info) {
+        console.log('onay')
+        if (err) {
+          return res.json({success: false, message: 'Something went wrong: ' + err});
+        }
+        else {
+          return res.json({success: true,info: info});
+        }
+      });
 });
 /*
 protectedRoutes.post('/offer/advertise', function (req, res) {
