@@ -77,9 +77,9 @@ protectedRoutes.post('/check', function (req, res) {
 
   protectedRoutes.post('/advertise/user', function (req, res) {
 
-    let userID = req.body ._id;
+    let userID = req.decoded.user._id;
   
-    AdvertiseModel.findOne({'user': userID}).populate('category').populate('user').exec()
+    AdvertiseModel.find({'user': userID}).populate('category').populate('user').exec()
     .then(function (advertiseModel) {
       return res.json({success: true, advertise: advertiseModel});
     })
@@ -100,9 +100,9 @@ protectedRoutes.post('/check', function (req, res) {
   //return all offers for a specific advertise
   protectedRoutes.post('/offer/advertise', function (req, res) {
 
-    let offerID = req.body ._id;
+    let advertiseID = req.body ._id;
   
-    OfferModel.findOne({'advertiseID': offerID}).populate('advertiseID').populate('offererID').exec()
+    OfferModel.find({'advertiseID': advertiseID}).populate('advertiseID').populate('offererID').exec()
     .then(function (offerModel) {
       return res.json({success: true, offer: offerModel});
     })
@@ -111,9 +111,11 @@ protectedRoutes.post('/check', function (req, res) {
   //return all offers for a specific user
   protectedRoutes.post('/offer/user', function (req, res) {
 
-    let userID = req.body ._id;
+    let userID = req.decoded.user._id;
+
+    console.log(userID);
   
-    OfferModel.findOne({'offererID': userID}).populate('advertiseID').populate('offererID').exec()
+    OfferModel.find({'offererID': userID}).populate('advertiseID').populate('offererID').exec()
     .then(function (offerModel) {
       return res.json({success: true, offer: offerModel});
     })
@@ -143,20 +145,18 @@ protectedRoutes.post('/check', function (req, res) {
     }
   });
 });
-
+/*
 protectedRoutes.post('/offer/advertise', function (req, res) {
 
-    let advertiseID = req.body ._id;
-    let status = req.body.status;
-  
-   AdvertiseModel.update({'_id': advertiseID}, { $set: { status: status }}, function (err, info) {
+    let advertiseID = req.body ._id;  
+    OfferModel.find({'advertiseID': advertiseID}, function (err, info) {
     if (err) {
       return res.json({success: false, message: 'Something went wrong: ' + err});
     }
     else {
-      return res.json({success: true,info: info});
+      return res.json({success: true, offer: info});
     }
   });
-});
+}); */
 
 export default protectedRoutes;

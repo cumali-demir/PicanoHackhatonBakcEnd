@@ -18,7 +18,7 @@ let userSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    budget: {
+    price: {
         type: Number,
         required: true
     },
@@ -29,7 +29,7 @@ let userSchema = mongoose.Schema({
     note: {
         type: String,
         required: true
-    },
+    }
 
 });
 

@@ -76,7 +76,7 @@ publicRoutes.get('/cities', function (req, res) {
 });
 
 publicRoutes.get('/advertise', function (req, res) {
-    AdvertiseModel.find({}).sort({'created_date': 'desc'}).populate('user').populate('category').exec(function (err, advertiseModel) {
+    AdvertiseModel.find({'status': 0}).sort({'created_date': 'desc'}).populate('user').populate('category').exec(function (err, advertiseModel) {
       if (err) {
         res.json({success: false, message: 'Something went wrong: ' + err});
       }
